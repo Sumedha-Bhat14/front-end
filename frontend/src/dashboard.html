@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            margin: 0;
+            background: #4954f3;
+        }
+        .navbar {
+            background: #2d2adf;
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .navbar h2 {
+            margin: 0;
+        }
+        /* .logout-btn {
+            background: white;
+            color: #0a66c2;
+            border: none;
+            padding: 8px 15px;
+            cursor: pointer;
+            border-radius: 5px; */
+        /* } */
+        .container {
+            padding: 20px;
+        }
+        .search-box {
+            margin: 20px 0;
+        }
+        .search-box input {
+            padding: 10px;
+            width: 250px;
+        }
+        .search-box button {
+            padding: 10px;
+            background: #0a66c2;
+            color: white;
+            border: none;
+        }
+        .jobs {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        .job-card {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 0 5px gray;
+        }
+        .apply-btn {
+            margin-top: 10px;
+            padding: 8px;
+            background: green;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="navbar">
+    <h2>Naukri Dashboard</h2>
+    <!-- <button class="logout-btn" onclick="logout()">Logout</button> -->
+</div>
+<div class="container">
+    <h3 id="welcome"></h3>
+    <div class="search-box">
+        <input type="text" placeholder="Search jobs...">
+        <button>Search</button>
+    </div>
+    <div class="jobs">
+        <div class="job-card">
+            <h4>Frontend Developer</h4>
+            <p>Company: ABCD Tech</p>
+            <p>Location: Bangalore</p>
+            <button class="apply-btn">Apply</button>
+        </div>
+        <div class="job-card">
+            <h4>Backend Developer</h4>
+            <p>Company: XYZ Ltd</p>
+            <p>Location: Hyderabad</p>
+            <button class="apply-btn">Apply</button>
+        </div>
+        <div class="job-card">
+            <h4>Full Stack Developer</h4>
+            <p>Company: TechSoft</p>
+            <p>Location: Chennai</p>
+            <button class="apply-btn">Apply</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    fetch('http://localhost:3000/jobs')
+.then(res => res.json())
+.then(data => {
+    const jobList = document.getElementById("jobList");
+
+    data.forEach(job => {
+        jobList.innerHTML += `
+            <div class="job-card">
+                <h4>${job.title}</h4>
+                <p>Company: ${job.company}</p>
+                <p>Location: ${job.location}</p>
+                <button onclick="applyJob('${job.title}')">Apply</button>
+            </div>
+        `;
+    });
+})
+.catch(err => console.log(err));
+</script>
+</body>
+</html>

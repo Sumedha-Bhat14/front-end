@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title> Login Page </title>
+        <style>
+           body{
+            background-color: rgb(247, 247, 247);
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+           }
+           .login-container{
+            background: rgb(221, 214, 214);
+            padding: 40px;
+            width: 450px;
+            border-radius: 10px;
+           }
+            .login-container h2{
+               text-align: center;
+               margin-bottom: 20px;
+           }
+           .input-box{
+            margin-bottom: 15px;
+           }
+           .input-box input{
+            width: 100%;
+            padding: 10px;
+            border: 1px solid;
+            border-radius: 5px;
+           }
+           .login-btn{
+            width: 100%;
+            padding: 10px;
+            background: #4a90e2;
+            border: none;
+            color: white;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer; 
+           }
+           .login-btn:hover{
+               background: #357abd;
+           }
+           .extra-links{
+            text-align: center;
+            margin-top: 15px;
+           }
+           .extra-links a{
+            color: #4a90e2;
+           }
+           
+        </style>
+         </head>
+         <body>
+            <div class="login-container">
+                <h2> Login </h2>
+             <div class="input-box">
+                <input type="text" id="username" placeholder="Username">
+             </div>
+             <div class="input-box">
+               <input type="password" id="password" placeholder="Password">
+             </div><br>
+             <button class="login-btn" onclick="login()"> Login </button>
+             <div class="extra-links">
+               <p><a href="#"> Forgot Password? </a></p>
+               <p> New user? <a href="#"> Register </a></p>
+             </div>
+            </div>
+
+             <script>
+                  function login() {
+                      const username=document.getElementById("username").value;
+                      const password=document.getElementById("password").value;
+                      console.log(username,password);
+            
+                      fetch('http://localhost:5000/login',{
+                       method: 'POST',
+                         headers:{'Content-Type': 'application/json'},
+                         body: JSON.stringify({
+                         username:"Sumedha",
+                           password:"sumedha"
+                       })
+                      })
+                       .then(res => res.json())
+                      .then(data => alert(data.message))
+                       .catch(err => console.log(err));
+                    } 
+            </script>
+</body>
+</html>
