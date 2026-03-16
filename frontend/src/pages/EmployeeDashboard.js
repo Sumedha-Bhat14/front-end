@@ -1,7 +1,7 @@
 
 import React from "react";
 import EmployeeSidebar from "../components/EmployeeSidebar";
-import "./Dashboard.css";
+import "./EDashboard.css";
 
 function EmployeeDashboard() {
   return (

@@ -25,32 +25,43 @@
 // export default App;  
 
 import React from "react";
-// import Login from "./pages/Login"; 
+ //import Login from "./pages/Login"; 
 //import AdminDashboard from "./pages/AdminDashboard";
-import EmployeeDashboard from "./pages/EmployeeDashboard";
+//import EmployeeDashboard from "./pages/EmployeeDashboard";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-<Route path="/employee" element={<EmployeeDashboard />} />
+import JobSeekerDashboard from "./pages/JobSeekerDashboard";
+
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/employee" element={<EmployeeDashboard />} />
-         {/* <Route path="/admin" element={<AdminDashboard />} />  */}
-      </Routes>
-    </BrowserRouter>
-  );
-}
+         {/* <Route path="/" element={<EmployeeDashboard />}    /> */} 
+         {/* <Route path="/" element={<Login />} />            */}
+          {/* <Route path="/admin" element={<AdminDashboard />} />  */}
+      
+        <Route path="/" element={<JobSeekerDashboard />} /> 
+        {/* <Route path="/add-job" element={<AddJob />} />  */} 
+     </Routes>
+   </BrowserRouter>
+  //  <div>
+  //   <AdminDashboard />
+  //   </div> 
 
+ );
+ 
+}
 
 //       <Login /> 
 //     </div> 
    //);
 //} 
-    //<div>
-      //<AdminDashboard />
-    //</div>
+
     
+
+    // <div>
+    //   <EmployeeDashboard />
+    // </div> 
       
   
 
